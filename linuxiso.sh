@@ -1,7 +1,7 @@
 #!/bin/sh
 
 touch $HOME/.local/share/iso.db
-DIR=$HOME/Downloads/
+DIR=$HOME/Downloads
 
 fedora_check ()
 {
