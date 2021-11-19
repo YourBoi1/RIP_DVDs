@@ -23,7 +23,6 @@ fedora_check ()
 }
 
 arch_check ()
-
 {
 	SITE=$(lynx -dump -nonumbers -nolist "https://archlinux.org/releng/releases/")
 	DATE=$(echo "$SITE" | awk '/Magnet/ {print $4}' | head -1)
@@ -43,7 +42,7 @@ arch_check ()
 }
 
 fedora_check "Fedora-Workstation-Live-x86_64-34" 0
-fedora_check "Fedora-Workstation-Live-x86_64-35_Beta" 0
+fedora_check "Fedora-Workstation-Live-x86_64-35" 0
 arch_check 0
 
 exit 0
