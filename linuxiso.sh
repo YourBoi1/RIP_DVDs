@@ -1,8 +1,6 @@
 #!/bin/sh
-
 touch $HOME/.local/share/iso.db
 DIR=$HOME/Downloads
-
 fedora_check ()
 {
 	SITE=$(lynx -dump -nonumbers -nolist "https://torrent.fedoraproject.org/")
@@ -19,10 +17,7 @@ fedora_check ()
 		aria2c -d $DIR --seed-time=$2 "https://torrent.fedoraproject.org/torrents/$1.torrent" && \
 		sed -i "s/$1 $PREVDATE/$1 $DATE/" $HOME/.local/share/iso.db
 	fi
-	return 0
-}
-
-arch_check ()
+@@ -26,15 +26,15 @@ arch_check ()
 {
 	SITE=$(lynx -dump -nonumbers -nolist "https://archlinux.org/releng/releases/")
 	DATE=$(echo "$SITE" | awk '/Magnet/ {print $4}' | head -1)
@@ -40,9 +35,7 @@ arch_check ()
 	fi
 	return 0
 }
-
 fedora_check "Fedora-Workstation-Live-x86_64-34" 0
 fedora_check "Fedora-Workstation-Live-x86_64-35_Beta" 0
 arch_check 0
-
 exit 0
